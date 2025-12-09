@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: node
-        image: btech:dev # <-- MUST MATCH YOUR BUILT IMAGE TAG
+        image: class-btech:dev
         imagePullPolicy: Never # Tells K8s to use the locally built image
         ports:
         - containerPort: 3000 # Matches the EXPOSE 3000 in your Dockerfile
