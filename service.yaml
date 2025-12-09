@@ -9,6 +9,6 @@ spec:
   type: NodePort # This type makes the app accessible outside the cluster VM
   ports:
     - protocol: TCP
-      port: 80 # The internal cluster IP port
+      port: 3000 # The internal cluster IP port
       targetPort: 3000 # The container port (from Dockerfile)
       nodePort: 30080 # This specific port will be used on your Minikube IP
