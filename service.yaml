@@ -1,0 +1,14 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-service
+spec:
+  selector:
+    app: node-app # Matches the labels in the deployment
+  type: NodePort # This type makes the app accessible outside the cluster VM
+  ports:
+    - protocol: TCP
+      port: 80 # The internal cluster IP port
+      targetPort: 3000 # The container port (from Dockerfile)
+      nodePort: 30080 # This specific port will be used on your Minikube IP
