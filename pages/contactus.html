@@ -1,18 +1,151 @@
-
-<!-- contactus.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us</title>
-  <style>
-    html, body { height: 100%; margin: 0; padding: 0; background:#eef2f3; font-family: Arial; }
-    .page-wrapper { min-height: calc(100% - 80px); display: flex; flex-direction: column; }
-    header { background:#9333ea; color:white; padding:25px; text-align:center; }
-    nav { background:#6b21a8; padding:10px; text-align:center; }
-    nav a { color:white; margin:0 15px; text-decoration:none; }
-    main { flex:1; }
-    .form-container { max-width:600px; background:white; padding:30px; margin:40px auto; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
-    input, textarea { width:100%; padding:10px; margin:10px 0; border:1px solid #ddd}
-  
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us</title>
+
+<style>
+  :root {
+    --bg: #eef2f3;
+    --text: #111;
+    --card-bg: white;
+    --accent: #9333ea;
+    --nav-bg: #6b21a8;
+  }
+
+  .dark {
+    --bg: #1a1a1a;
+    --text: #f1f1f1;
+    --card-bg: #2a2a2a;
+    --nav-bg: #4a1470;
+  }
+
+  body {
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial;
+    transition:background .3s, color .3s;
+  }
+
+  header {
+    background: var(--accent);
+    color:white;
+    padding:25px;
+    text-align:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  nav {
+    background: var(--nav-bg);
+    text-align:center;
+    padding:12px;
+  }
+
+  nav a {
+    color:white;
+    margin:0 15px;
+    text-decoration:none;
+    font-weight:bold;
+  }
+
+  .form-container {
+    max-width:600px;
+    background:var(--card-bg);
+    padding:30px;
+    margin:40px auto;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    transition:background .3s;
+  }
+
+  input, textarea {
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:5px;
+    border:1px solid #ccc;
+    font-size:1rem;
+  }
+
+  button.submit {
+    background:var(--accent);
+    color:white;
+    padding:12px 20px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    width:100%;
+    margin-top:10px;
+    font-size:1rem;
+  }
+
+  button.submit:hover {
+    opacity:.9;
+  }
+
+  button.toggle {
+    padding:8px 15px;
+    background:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    color:var(--accent);
+    font-weight:bold;
+  }
+
+  footer {
+    background:#1f2937;
+    color:#d1d5db;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    border-top:4px solid #9333ea;
+  }
+</style>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  }
+  window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
+  };
+</script>
+
+</head>
+<body>
+
+<header>
+  <h1>Contact Us</h1>
+  <button class="toggle" onclick="toggleDarkMode()">🌙 Dark</button>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="home.html">Dashboard</a>
+  <a href="about.html">About</a>
+  <a href="contactus.html">Contact</a>
+</nav>
+
+<main>
+  <div class="form-container">
+    <h2>Send Us a Message</h2>
+
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea rows="5" placeholder="Your Message"></textarea>
+
+    <button class="submit">Send Message</button>
+  </div>
+</main>
+
+<footer>© 2025 Smart Classroom • Contact Team</footer>
+
+</body>
+</html>

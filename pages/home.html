@@ -1,149 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Classroom Portal</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Classroom Dashboard</title>
 
-  <style>
-    :root {
-      --bg: #f5f5f5;
-      --text: #111;
-      --card-bg: #fff;
-      --nav-bg: #003580;
-      --header-bg: #000;
-    }
+<style>
+  :root {
+    --bg: #eef2f3;
+    --text: #111;
+    --card-bg: white;
+    --accent: #0284c7;
+    --nav-bg: #0369a1;
+  }
 
-    /* Dark mode variables */
-    .dark {
-      --bg: #1a1a1a;
-      --text: #f1f1f1;
-      --card-bg: #2a2a2a;
-      --nav-bg: #0a3d66;
-      --header-bg: #111;
-    }
+  .dark {
+    --bg: #1a1a1a;
+    --text: #f1f1f1;
+    --card-bg: #2a2a2a;
+    --accent: #0284c7;
+    --nav-bg: #0a3d66;
+  }
 
-    html, body {
-      margin:0;
-      padding:0;
-      font-family:Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      transition:background .3s, color .3s;
-    }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    transition: background .3s, color .3s;
+  }
 
-    header {
-      background:var(--header-bg);
-      color:white;
-      padding:20px;
-      text-align:center;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
+  header {
+    background: var(--accent);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
 
-    nav {
-      background:var(--nav-bg);
-      padding:12px;
-      text-align:center;
-    }
+  nav {
+    background: var(--nav-bg);
+    padding: 10px;
+    text-align: center;
+  }
 
-    nav a {
-      color:white;
-      margin:0 15px;
-      text-decoration:none;
-      font-weight:bold;
-      opacity:.9;
-      transition:opacity .2s;
-    }
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.9;
+  }
 
-    nav a:hover { opacity:1; }
+  nav a:hover { opacity: 1; }
 
-    .hero {
-      background:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b') center/cover;
-      height:350px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      color:white;
-      font-size:2.4rem;
-      font-weight:bold;
-      animation:fadeIn 1.2s ease-in-out;
-      text-shadow:1px 1px 6px #000;
-    }
+  button.toggle {
+    padding: 8px 15px;
+    border: none;
+    background: white;
+    color: var(--accent);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight:bold;
+  }
 
-    @keyframes fadeIn {
-      from { opacity:0; transform:translateY(30px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px;
+  }
 
-    .section { padding:40px; text-align:center; }
+  .card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    transition: transform .25s, box-shadow .25s;
+  }
 
-    button.toggle {
-      padding:8px 15px;
-      border:none;
-      background:#3b82f6;
-      color:white;
-      border-radius:5px;
-      cursor:pointer;
-      font-size:.9rem;
-    }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  }
 
-    button.toggle:hover { background:#2563eb; }
+  .card img {
+    width: 100%;
+    border-radius: 8px;
+  }
 
-    footer {
-      background:#1f2937;
-      color:#d1d5db;
-      height:80px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      border-top:4px solid #3b82f6;
-      margin-top:40px;
-    }
-  </style>
+  footer {
+    background:#1f2937;
+    color:#d1d5db;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    border-top:4px solid #3b82f6;
+  }
+</style>
 
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-      localStorage.setItem("theme",
-        document.body.classList.contains('dark') ? "dark" : "light"
-      );
-    }
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  }
+  window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
+  };
+</script>
 
-    window.onload = () => {
-      if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark");
-      }
-    };
-  </script>
 </head>
-
 <body>
-  <header>
-    <h1>Smart Classroom Portal</h1>
-    <button class="toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
-  </header>
 
-  <nav>
-    <a href="home.html">Dashboard</a>
-    <a href="about.html">About</a>
-    <a href="contactus.html">Contact</a>
-  </nav>
+<header>
+  <h1>Classroom Dashboard</h1>
+  <button class="toggle" onclick="toggleDarkMode()">🌙 Dark</button>
+</header>
 
-  <main>
-    <div class="hero">Welcome to Your Classroom Hub</div>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="home.html">Dashboard</a>
+  <a href="about.html">About</a>
+  <a href="contactus.html">Contact</a>
+</nav>
 
-    <div class="section">
-      <h2>Learn. Explore. Grow.</h2>
-      <p>
-        Access classroom resources, announcements, and smart tools 
-        designed to improve your learning experience.
-      </p>
+<main>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b" />
+      <h3>Announcements</h3>
+      <p>View important classroom updates and schedules in real time.</p>
     </div>
-  </main>
 
-  <footer>© 2025 Smart Classroom • Built for Learning</footer>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" />
+      <h3>Resources</h3>
+      <p>Access learning materials, assignments, and digital notes.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b" />
+      <h3>Smart Tools</h3>
+      <p>Monitor energy usage, classroom conditions, and automation tools.</p>
+    </div>
+  </div>
+</main>
+
+<footer>© 2025 Smart Classroom • Built for Learning</footer>
+
 </body>
 </html>

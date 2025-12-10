@@ -1,41 +1,137 @@
-
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Our Classroom</title>
-  <style>
-    html, body { height: 100%; margin: 0; padding: 0; background:#fafafa; font-family: Arial; }
-    .page-wrapper { min-height: calc(100% - 80px); display: flex; flex-direction: column; }
-    header { background:#0f766e; color:white; padding:25px; text-align:center; }
-    nav { background:#0d4f48; padding:10px; text-align:center; }
-    nav a { color:white; margin:0 15px; text-decoration:none; }
-    main { flex:1; }
-    .content { padding:40px; max-width:900px; margin:auto; line-height:1.7; }
-    img { width:100%; border-radius:8px; margin:20px 0; }
-    footer { height:80px; background:#1f2937; color:#d1d5db; display:flex; justify-content:center; align-items:center; border-top:4px solid #3b82f6; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Our Classroom</title>
+
+<style>
+  :root {
+    --bg:#fafafa;
+    --text:#111;
+    --card-bg:white;
+    --accent:#0f766e;
+    --nav-bg:#0d4f48;
+  }
+
+  .dark {
+    --bg:#1a1a1a;
+    --text:#f1f1f1;
+    --card-bg:#2a2a2a;
+    --nav-bg:#0a3631;
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial;
+    transition:background .3s, color .3s;
+  }
+
+  header{
+    background:var(--accent);
+    color:white;
+    padding:25px;
+    text-align:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  nav{
+    background:var(--nav-bg);
+    text-align:center;
+    padding:12px;
+  }
+
+  nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-weight:bold;
+  }
+
+  .content{
+    max-width:900px;
+    padding:40px;
+    margin:auto;
+    line-height:1.7;
+  }
+
+  img{
+    width:100%;
+    border-radius:10px;
+    margin:20px 0;
+    box-shadow:0px 3px 15px rgba(0,0,0,0.15);
+  }
+
+  button.toggle {
+    padding:8px 15px;
+    background:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    color:var(--accent);
+    font-weight:bold;
+  }
+
+  footer{
+    background:#1f2937;
+    color:#d1d5db;
+    padding:20px;
+    text-align:center;
+    margin-top:40px;
+    border-top:4px solid #3b82f6;
+  }
+</style>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  }
+  window.onload = () => {
+    if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
+  };
+</script>
 </head>
+
 <body>
-  <div class="page-wrapper">
-    <header><h1>About Us</h1></header>
-    <nav>
-      <a href="home.html">Home</a>
-      <a href="home.html">Dashboard</a>
-      <a href="about.html">About</a>
-      <a href="contactus.html">Contact</a>
-    </nav>
-    <main>
-      <div class="content">
-        <h2>Our Smart Classroom Project</h2>
-        <p>This classroom system uses modern technology to improve learning, comfort, and energy efficiency. It helps automatically analyze lighting conditions and provides insights for teachers and students.</p>
-        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc" />
-        <p>We believe that learning spaces should adapt to the needs of students. This platform represents our commitment to innovation, accessibility, and the future of education.</p>
-      </div>
-    </main>
+
+<header>
+  <h1>About Us</h1>
+  <button class="toggle" onclick="toggleDarkMode()">🌙 Dark</button>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="home.html">Dashboard</a>
+  <a href="about.html">About</a>
+  <a href="contactus.html">Contact</a>
+</nav>
+
+<main>
+  <div class="content">
+    <h2>Our Smart Classroom Project</h2>
+    <p>
+      Our smart classroom system integrates modern automation and analytics 
+      to improve comfort, energy efficiency, and student engagement.
+      It provides lighting analysis, environmental monitoring, resource access, 
+      and digital tools for seamless learning.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc" />
+
+    <p>
+      We believe that future learning environments should adapt to students — 
+      not the other way around. Our platform is designed with accessibility, 
+      innovation, and ease of use at its core.
+    </p>
   </div>
-  <footer>© 2025 Smart Classroom • Built for Learning</footer>
+</main>
+
+<footer>© 2025 Smart Classroom • About Our Team</footer>
+
 </body>
 </html>
