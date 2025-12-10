@@ -1,154 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>B-Tech Classroom Dashboard</title>
-
-<style>
-  :root {
-    --bg: #eef2f3;
-    --text: #111;
-    --card-bg: white;
-    --accent: #0284c7;
-    --nav-bg: #0369a1;
-  }
-
-  .dark {
-    --bg: #1a1a1a;
-    --text: #f1f1f1;
-    --card-bg: #2a2a2a;
-    --accent: #0284c7;
-    --nav-bg: #0a3d66;
-  }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: Arial, sans-serif;
-    transition: background .3s, color .3s;
-  }
-
-  header {
-    background: var(--accent);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-  }
-
-  nav {
-    background: var(--nav-bg);
-    padding: 10px;
-    text-align: center;
-  }
-
-  nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-    opacity: 0.9;
-  }
-
-  nav a:hover { opacity: 1; }
-
-  button.toggle {
-    padding: 8px 15px;
-    border: none;
-    background: white;
-    color: var(--accent);
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight:bold;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    padding: 40px;
-  }
-
-  .card {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-    transition: transform .25s, box-shadow .25s;
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
-  }
-
-  .card img {
-    width: 100%;
-    border-radius: 8px;
-  }
-
-  footer {
-    background:#1f2937;
-    color:#d1d5db;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-    border-top:4px solid #3b82f6;
-  }
-</style>
-
-<script>
-  function toggleDarkMode() {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-  }
-  window.onload = () => {
-    if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark");
-  };
-</script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Classroom</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f9;
+    }
+    header {
+      background: #4a90e2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #333;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    section {
+      padding: 20px;
+    }
+    h2 {
+      color: #4a90e2;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Welcome to the Online Classroom</h1>
+    <p>Learn, Engage, and Succeed</p>
+  </header>
 
-<header>
-  <h1>Classroom Dashboard</h1>
-  <button class="toggle" onclick="toggleDarkMode()">🌙 Dark</button>
-</header>
+  <nav>
+    <a href="#courses">Courses</a>
+    <a href="#announcements">Announcements</a>
+    <a href="#assignments">Assignments</a>
+  </nav>
 
-<nav>
-
-  <a href="home.html">Dashboard</a>
-  <a href="about.html">About</a>
-  <a href="contactus.html">Contact</a>
-</nav>
-
-<main>
-  <div class="grid">
+  <section id="courses">
+    <h2>Courses</h2>
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b" />
-      <h3>Announcements</h3>
-      <p>View important classroom updates and schedules in real time.</p>
+      <h3>Mathematics 101</h3>
+      <p>Introduction to Algebra and Geometry.</p>
     </div>
-
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" />
-      <h3>Resources</h3>
-      <p>Access learning materials, assignments, and digital notes.</p>
+      <h3>Science Basics</h3>
+      <p>Explore Physics, Chemistry, and Biology fundamentals.</p>
     </div>
+  </section>
 
+  <section id="announcements">
+    <h2>Announcements</h2>
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b" />
-      <h3>Smart Tools</h3>
-      <p>Monitor energy usage, classroom conditions, and automation tools.</p>
+      <p><strong>Dec 10:</strong> Midterm exams scheduled for next week.</p>
     </div>
-  </div>
-</main>
+    <div class="card">
+      <p><strong>Dec 12:</strong> Guest lecture on Climate Change.</p>
+    </div>
+  </section>
 
-<footer>© 2025 B-Tech IT Smart Classroom • Built for Learning</footer>
-
+  <section id="assignments">
+    <h2>Assignments</h2>
+    <div class="card">
+      <p><strong>Math Homework:</strong> Solve problems from Chapter 3 (Due Dec 15).</p>
+    </div>
+    <div class="card">
+      <p><strong>Science Project:</strong> Create a poster on Renewable Energy (Due Dec 20).</p>
+    </div>
+  </section>
 </body>
 </html>
